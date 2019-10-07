@@ -78,3 +78,37 @@ function f5_1(limit, list) {
 }
 
 f5_1(3, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+
+// 6. while을 range로
+function f6(end) {
+  let i = 0;
+  while (i < end) {
+    console.log(i);
+    ++i;
+  }
+}
+
+// f6(10);
+
+function f6L(end) {
+  _.each(console.log, L.range(end));
+}
+
+// f6L(10);
+
+// 6-1. 특정 간격의 range
+function f6_1(end) {
+  let i = 1;
+  while (i < end) {
+    console.log(i);
+    i += 2;
+  }
+}
+
+f6_1(10);
+
+function f6_1L(end) {
+  _.each(console.log, L.range(1, end, 2));
+}
+
+f6_1L(10);
