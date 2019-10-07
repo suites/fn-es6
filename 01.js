@@ -1,4 +1,5 @@
-import { L } from 'fxjs';
+import { L, C } from 'fxjs';
+import _ from 'fxjs/Strict';
 
 // 1. 홀수 n개 더하기
 function f1(limit, list) {
@@ -50,3 +51,30 @@ function f4(limit, list) {
 }
 
 f4(3, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+
+// 5. 축약 및 합산을 reduce로
+function f5(limit, list) {
+  const add = (a, b) => a + b;
+
+  console.log(
+    _.reduce(add,
+      L.take(limit,
+        L.map(a => a * a,
+          L.filter(a => a % 2, list)))));
+}
+
+f5(3, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+
+// 5-1. go와 함께
+function f5_1(limit, list) {
+  const add = (a, b) => a + b;
+
+  _.go(list,
+    L.filter(a => a % 2),
+    L.map(a => a * a),
+    L.take(limit),
+    _.reduce(add),
+    console.log);
+}
+
+f5_1(3, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
